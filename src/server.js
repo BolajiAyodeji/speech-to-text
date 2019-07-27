@@ -3,6 +3,7 @@ const app = express();
 const AuthorizationV1 = require('watson-developer-cloud/authorization/v1');
 const SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 const vcapServices = require('vcap_services');
+const cors = require('cors')
 
 
 // on bluemix, enable rate-limiting and force https
@@ -27,6 +28,7 @@ if (process.env.VCAP_SERVICES) {
 }
 
 app.use(express.static(__dirname + '/static'));
+app.use(cors());
 
 // token endpoints
 // **Warning**: these endpoints should probably be guarded with additional authentication & authorization for production use
