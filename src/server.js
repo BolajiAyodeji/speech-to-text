@@ -37,10 +37,8 @@ app.use(cors());
 var sttAuthService = new AuthorizationV1(
   Object.assign(
     {
-      username: 'sirbeejay1@gmail.com', // or hard-code credentials here
-      password: '08109445504g33K!',
-      iam_apikey: 'ppT0qCMkKliaA5L8EE78ow7MjQaJwQzgHiUGWLYfmPbp', // if using an RC service
-      url: 'https://gateway-syd.watsonplatform.net/speech-to-text/api'
+        iam_apikey: 'ppT0qCMkKliaA5L8EE78ow7MjQaJwQzgHiUGWLYfmP',
+        url: 'https://gateway-syd.watsonplatform.net/speech-to-text/api'
     },
     vcapServices.getCredentials('speech_to_text') // pulls credentials from environment in bluemix, otherwise returns {}
   )
