@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br>
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/521ee789-c80e-4fbd-a26a-88ba6570a143/deploy-status)](https://app.netlify.com/sites/b-speech-to-text/deploys)
 
 ## Available Scripts
