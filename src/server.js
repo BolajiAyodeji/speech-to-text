@@ -4,7 +4,10 @@ const AuthorizationV1 = require('watson-developer-cloud/authorization/v1');
 const SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1');
 const vcapServices = require('vcap_services');
 const cors = require('cors')
+const dotenv = require('dotenv')
 
+// allows environment properties to be set in a file named .env
+dotenv.config({ silent: true });
 
 // on bluemix, enable rate-limiting and force https
 if (process.env.VCAP_SERVICES) {
@@ -37,8 +40,8 @@ app.use(cors());
 var sttAuthService = new AuthorizationV1(
   Object.assign(
     {
-        iam_apikey: 'ppT0qCMkKliaA5L8EE78ow7MjQaJwQzgHiUGWLYfmP',
-        url: 'https://gateway-syd.watsonplatform.net/speech-to-text/api'
+      iam_apikey: process.env.SPEECH_TO_TEXT_IAM_APIKEY,
+      url: process.env.SPEECH_TO_TEXT_URL ? process.env.SPEECH_TO_TEXT_URL : SpeechToTextV1.URL
     },
     vcapServices.getCredentials('speech_to_text') // pulls credentials from environment in bluemix, otherwise returns {}
   )
