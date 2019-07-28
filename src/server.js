@@ -7,7 +7,7 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 
 // allows environment properties to be set in a file named .env
-dotenv.config({ silent: true });
+dotenv.config();
 
 // on bluemix, enable rate-limiting and force https
 if (process.env.VCAP_SERVICES) {
@@ -57,8 +57,9 @@ app.use('/api/speech-to-text/token', function(req, res) {
   });
 });
 
-const port = process.env.PORT || process.env.VCAP_APP_PORT || 3002;
+const port = process.env.PORT || process.env.VCAP_APP_PORT || 5000;
 app.listen(port, function() {
+  console.log(process.env.SPEECH_TO_TEXT_IAM_APIKEY)
   console.log('Example IBM Watson Speech JS SDK client app & token server live at http://localhost:%s/', port);
 });
 
@@ -69,7 +70,7 @@ app.listen(port, function() {
 if (!process.env.VCAP_SERVICES) {
   const fs = require('fs');
   const https = require('https');
-  const HTTPS_PORT = 3001;
+  const HTTPS_PORT = 5001;
 
   const options = {
     key: fs.readFileSync(__dirname + '/keys/localhost.pem'),

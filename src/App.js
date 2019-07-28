@@ -7,7 +7,7 @@ import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone'
 
 class App extends Component {
   onListenClick() {
-    fetch('http://localhost:3002/api/speech-to-text/token')
+    fetch('http://localhost:3001/api/speech-to-text/token')
     .then(function(response) {
       return response.text();
     }).then(function (token) {
